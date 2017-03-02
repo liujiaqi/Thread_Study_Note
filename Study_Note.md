@@ -63,7 +63,13 @@ Petitioning is the process of authenticating and authorizing a Commissioner Cand
 * Native Commissioner Candidate  
   The Commissioner Router as a representative
   ![Native Commissioner Petitioning Sequence](Native_Commissioner_Petitioning_Sequence.jpg)
+
 ### Joining ###
+
+## Security ##
+The communication of Thread Network is protected by The Thread Master Key (thrMasterKey). *thrMasterKey* is used to derive two separate keys with HMAC-SHA256 for use by the MAC sublayer and MLE.
+
+Petitioning and Joining are protected by DTLS with Elliptic Curves Cryptography (ECC). The DTLS handshake uses a user-input passphrase to authenticate a device.
 
 
 > ## Reference ##
