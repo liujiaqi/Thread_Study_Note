@@ -29,7 +29,7 @@ Devices initially attach to the Thread Network as a REED, and may request to bec
 There is a device acting as the Leader. And there can be only **ONE** Leader at a time.
 
 The Leader's main functions:
-* Assign and manage Router IDs.
+* Assign and manage Router IDs, 0...62 (Router ID 63 is reserved).
 * Collate and distribute the Thread Network Data.
 
 ### Border Router ###
@@ -41,7 +41,15 @@ There is an on-mesh commissioning device or an off-network commissioning device,
 The Commissioner is the currently elected authentication server for new Thread devices and the authorizer for providing the network credentials they require to join the network, and typically provides the interface by which a human administrator manages joining a new device to the Thread Network.
 
 ## Forming a Network ##
+Normally the device performs an energy scan to pick a quiet channel and then an active scan to verify which PAN IDs may be already used by other networks in range.
 
+The device MUST choose the following values upon starting a Thread Network.
+* PAN ID: 2 bytes in length set as the macPANId IEEE 802.15.4 PIB attribute for all nodes
+* Master Key: 16 bytes in length, chosen using a cryptographically-sound random number generator, used to derive security material for MAC and MLE protection.
+* Commissioning Credential: This is human-readable key, 8-255 bytes in length, used to form the PSKc used when authenticating a Commissioner.
+* Mesh-Local Prefix: an IPv6 Unique Local Address (ULA) prefix used for communication within the Thread Network.
+* Extended PAN ID: a randomly chosen 8-byte value, used to uniquely identify Thread Networks in range.
+* Network Name: a human-readable name for the network, up to 16 bytes in length.
 
 ## Joining a Network ##
 
