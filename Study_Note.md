@@ -52,9 +52,17 @@ The device MUST choose the following values upon starting a Thread Network.
 * Network Name: a human-readable name for the network, up to 16 bytes in length.
 
 ## Joining a Network ##
+When a device, Joiner, wishes to join a Thread Network, there must be a device has became Commissioner by Petitioning.
 
-### Commissioning ###
+### Petitioning ###
+Petitioning is the process of authenticating and authorizing a Commissioner Candidate onto the Thread Network. And this process is protected by an enhanced key derived from Commissioning Credential using key stretching called the PSKc (Pre-Shared Key for the Commissioner).
+* External Commissioner Candidate  
+  A Border Router as a representative
+  ![External Commissioner Petitioning Sequence](External_Commissioner_Petitioning_Sequence.jpg)
 
+* Native Commissioner Candidate  
+  The Commissioner Router as a representative
+  ![Native Commissioner Petitioning Sequence](Native_Commissioner_Petitioning_Sequence.jpg)
 ### Joining ###
 
 
