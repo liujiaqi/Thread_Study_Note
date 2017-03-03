@@ -57,7 +57,8 @@ When a device, Joiner, wishes to join a Thread Network, there must be a device h
 ### Petitioning ###
 Petitioning is the process of authenticating and authorizing a Commissioner Candidate onto the Thread Network. And this process is protected by an enhanced key derived from Commissioning Credential using key stretching called the PSKc (Pre-Shared Key for the Commissioner).
 * External Commissioner Candidate  
-  A Border Router as a representative
+  A Border Router as a representative  
+  After Petitioning there is a security session protected by DTLS
   ![External Commissioner Petitioning Sequence](External_Commissioner_Petitioning_Sequence.jpg)
 
 * Native Commissioner Candidate  
@@ -65,6 +66,16 @@ Petitioning is the process of authenticating and authorizing a Commissioner Cand
   ![Native Commissioner Petitioning Sequence](Native_Commissioner_Petitioning_Sequence.jpg)
 
 ### Joining ###
+Before joining, the Joiner must knows the network's current channel and PAN ID, If it does not, it will need to use the Discovery Request message to locate devices on the network.
+
+As the Joiner is untrusted at the point of joining, there is a responsibility of the Commissioner to authenticate the Joiner. After authentication the Joiner acquire Thread Network Data with the Mesh Link Establishment (MLE).
+
+If the Joiner can't communication with the Commissioner directly there are some devices like Joiner Router and Border Router as representative transfering data between the Joiner and the Commissioner.
+
+* Authentication
+![Joiner Authentication](Joiner_Authentication.jpg)
+* Attaching
+![Attaching to a Parent](Attaching_to_a_Parent.jpg)
 
 ## Security ##
 The communication of Thread Network is protected by The Thread Master Key (thrMasterKey). *thrMasterKey* is used to derive two separate keys with HMAC-SHA256 for use by the MAC sublayer and MLE.
